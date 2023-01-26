@@ -240,7 +240,7 @@ export class SMTPClient {
 
         this.#connection.writeCmd(
           "Content-Disposition:",
-          attachment.contentDisposition || "attachment",
+          attachment.contentDisposition || "attachment"
           + "; filename=" + attachment.filename,
         );
 
