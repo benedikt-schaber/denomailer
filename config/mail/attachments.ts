@@ -4,6 +4,7 @@ interface baseAttachment {
   contentType: string;
   filename: string;
   contentID?: string | number;
+  contentDisposition?: "attachment" | "inline";
 }
 
 export type Attachment =
