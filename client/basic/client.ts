@@ -238,14 +238,11 @@ export class SMTPClient {
           );
         }
 
-        if (attachment.contentDisposition === "inline") {
-          this.#connection.writeCmd("Content-Disposition: inline")
-        } else {
-          this.#connection.writeCmd(
-            "Content-Disposition: attachment;",
-	    "filename=" + attachment.filename,
-          );
-        }
+        this.#connection.writeCmd(
+          "Content-Disposition:",
+          attachment.contentDisposition || "attachment",
+          + "; filename=" + attachment.filename,
+        );
 
         if (attachment.encoding === "base64") {
           this.#connection.writeCmd(
